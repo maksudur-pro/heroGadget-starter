@@ -7,7 +7,6 @@ const Shop = () => {
   const productData = useLoaderData();
 
   const handleAddCart = (id) => {
-    console.log(id);
     addToDb(id);
   };
 
