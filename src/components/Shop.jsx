@@ -1,13 +1,23 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
+import ProductCard from "./Cards/ProductCard";
+import { addToDb } from "./Utils/FakeDb";
 
 const Shop = () => {
   const productData = useLoaderData();
-  console.log(productData);
+
+  const handleAddCart = (id) => {
+    console.log(id);
+    addToDb(id);
+  };
+
   return (
-    <div className="grid md:grid-cols-2 lg:grid-cols-3">
+    <div className="product-container">
       {productData.map((product) => (
-        <p key={product.id}>{product.name}</p>
+        <ProductCard
+          product={product}
+          key={product.id}
+          handleAddCart={handleAddCart}></ProductCard>
       ))}
     </div>
   );
